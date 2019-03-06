@@ -1,0 +1,29 @@
+server:
+  port: 9092
+
+security:
+    oauth2:
+        client:
+            access-token-validity-seconds: 1800
+            authorized-grant-types: password,refresh_token
+            client-id: prova
+            client-secret: prova-client
+            resource-ids: resources
+            grant_type: password
+            scope: read,write
+
+spring:
+    datasource:
+        data: classpath:/sql/data.sql
+        driver-class-name: org.h2.Driver
+        platform: h2
+        url: jdbc:h2:file:~/prova-servidor-autorizacao
+        username: sa
+        password:
+        schema: classpath:/sql/schema.sql
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        generate-ddl: false
+        hibernate:
+            ddl-auto: none
+        show-sql: true
